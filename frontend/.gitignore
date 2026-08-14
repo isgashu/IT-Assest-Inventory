@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+yarn-lock.lock
+package-lock.json
+
+# Production
+/dist
+/.next/
+/out/
+
+# Misc
+.env*
+*.local
+*.env*.local
+
+# Vite
+/.vite
+/hot

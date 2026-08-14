@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Runtime
+*.local
+
+# Environment
+.env*
+
+# Prisma
+/.prisma
+/generated
+
+# Database
+*.db
