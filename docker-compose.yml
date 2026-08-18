@@ -1,0 +1,44 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      DATABASE_PATH: /app/data/inventory.db
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env.docker}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-24h}
+      BCRYPT_SALT_ROUNDS: ${BCRYPT_SALT_ROUNDS:-12}
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:8080}
+    expose:
+      - "5000"
+    volumes:
+      - inventory_data:/app/data
+      - inventory_backups:/app/backups
+    networks:
+      - inventory
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-/api}
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${FRONTEND_PORT:-8080}:80"
+    networks:
+      - inventory
+
+volumes:
+  inventory_data:
+  inventory_backups:
+
+networks:
+  inventory:
+    driver: bridge

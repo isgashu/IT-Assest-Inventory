@@ -1,8 +1,13 @@
 const Database = require('better-sqlite3');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const path = require('path');
 
-const db = new Database('./dev.db');
+const configuredDatabasePath = process.env.DATABASE_PATH;
+const databasePath = configuredDatabasePath && path.isAbsolute(configuredDatabasePath)
+  ? configuredDatabasePath
+  : path.join(__dirname, '..', configuredDatabasePath || 'dev.db');
+const db = new Database(databasePath);
 
 exports.register = async (req, res) => {
   try {

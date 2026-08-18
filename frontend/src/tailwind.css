@@ -1,3 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #2563eb;
+  --color-success: #16a34a;
+  --color-info: #0891b2;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+}
+
+@utility shadow-right {
+  box-shadow: 4px 0 8px -6px rgb(15 23 42 / 0.25);
+}

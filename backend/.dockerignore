@@ -1,0 +1,10 @@
+node_modules
+*.db
+*.sqlite
+*.sqlite-journal
+backups
+.env
+.env.*
+npm-debug.log*
+generated
+.prisma
