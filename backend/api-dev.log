@@ -1,0 +1,10 @@
+
+> backend@1.0.0 start
+> node index.js
+
+◇ injected env (6) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+User table already has data, skipping seed.
+Inventory tables already have data, skipping demo seed.
+Database initialized successfully.
+Server running on port 5000
