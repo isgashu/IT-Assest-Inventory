@@ -1250,3 +1250,5 @@ docker compose logs --tail=100 backend
 ```
 
 Open `http://localhost:8080` for a direct test. For production, bind the frontend host port to loopback, put HTTPS Nginx/IIS in front of it, configure DNS and TLS, and back up the `inventory_data` and `inventory_backups` volumes before go-live.
+#   I T - A s s e s t - I n v e n t o r y  
+ 
